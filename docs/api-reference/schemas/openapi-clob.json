@@ -3595,16 +3595,15 @@
           "salt",
           "maker",
           "signer",
-          "taker",
           "tokenId",
           "makerAmount",
           "takerAmount",
-          "expiration",
-          "nonce",
-          "feeRateBps",
           "side",
           "signatureType",
-          "signature"
+          "signature",
+          "timestamp",
+          "metadata",
+          "builder"
         ],
         "properties": {
           "requestId": {
@@ -3626,9 +3625,6 @@
           "signer": {
             "type": "string"
           },
-          "taker": {
-            "type": "string"
-          },
           "tokenId": {
             "type": "string"
           },
@@ -3640,14 +3636,8 @@
           },
           "expiration": {
             "type": "integer",
-            "format": "int64"
-          },
-          "nonce": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "feeRateBps": {
-            "type": "string"
+            "format": "int64",
+            "description": "Optional offchain GTD expiry; not included in the signed order."
           },
           "side": {
             "type": "string",
@@ -3662,6 +3652,18 @@
           },
           "signature": {
             "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "Millisecond timestamp included in the signed order."
+          },
+          "metadata": {
+            "type": "string",
+            "description": "Metadata bytes32."
+          },
+          "builder": {
+            "type": "string",
+            "description": "Builder bytes32. Encodes the builder wallet as bytes32."
           }
         }
       },
@@ -4357,15 +4359,15 @@
           "conditionId",
           "maker",
           "signer",
-          "taker",
           "makerAmount",
           "takerAmount",
           "side",
-          "nonce",
-          "feeRateBps",
           "salt",
           "signatureType",
-          "signature"
+          "signature",
+          "timestamp",
+          "metadata",
+          "builder"
         ],
         "properties": {
           "tokenId": {
@@ -4379,7 +4381,7 @@
           "expiration": {
             "type": "string",
             "nullable": true,
-            "description": "Optional Unix timestamp expiry expressed as a string."
+            "description": "Optional offchain GTD expiry; not included in the signed order."
           },
           "maker": {
             "type": "string",
@@ -4388,10 +4390,6 @@
           "signer": {
             "type": "string",
             "description": "Signing address when different from maker."
-          },
-          "taker": {
-            "type": "string",
-            "description": "Counterparty address allowed to fill the order."
           },
           "makerAmount": {
             "type": "string",
@@ -4409,19 +4407,9 @@
             ],
             "description": "Order side (BUY or SELL)."
           },
-          "nonce": {
-            "type": "string",
-            "description": "Client-specified nonce."
-          },
-          "feeRateBps": {
-            "type": "string",
-            "description": "Fee rate in basis points."
-          },
           "metadata": {
-            "type": "object",
-            "nullable": true,
-            "additionalProperties": true,
-            "description": "Arbitrary metadata payload."
+            "type": "string",
+            "description": "Metadata bytes32."
           },
           "salt": {
             "type": "string",
@@ -4441,6 +4429,14 @@
           "signature": {
             "type": "string",
             "description": "Signature payload."
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "Millisecond timestamp included in the signed order."
+          },
+          "builder": {
+            "type": "string",
+            "description": "Builder bytes32. Encodes the builder wallet as bytes32."
           }
         }
       },
